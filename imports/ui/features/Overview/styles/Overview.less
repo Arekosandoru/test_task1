@@ -1,0 +1,28 @@
+.Overview {
+    .deadlineInputField {
+        input {
+            color: #5ca5ff;
+        }
+    }
+
+    .card-summary {
+        input:disabled,
+        div:disabled,
+        textarea:disabled {
+            color: inherit;
+        }
+
+        .form-skills {
+            & > div {
+                width: 240px;
+            }
+        }
+    }  
+    .expanded {
+        div,
+        textarea {
+            max-height: 300px;
+            overflow: hidden;
+        }
+    }
+}

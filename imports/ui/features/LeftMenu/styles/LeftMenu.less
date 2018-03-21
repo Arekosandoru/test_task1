@@ -1,0 +1,79 @@
+.LeftMenu {
+    background-color: #edeff2;
+
+    & > div {
+        box-shadow: 0px -3px 16px 3px rgba(0, 0, 0, 0.16);
+        border-right: none;
+    }
+    .Drawer-toolbar {
+        background-color: #3f51b5;
+        height: 128px;
+        i {
+            cursor: pointer;
+        }
+        .Drawer-toolbar-inner {
+            height: 128px;
+            width: 100%;
+            margin: 0;
+            .user-status-wrap {
+                position: relative;
+            }
+            .user-status {
+                position: absolute;
+                bottom: 12px;
+                right: 0px;
+                height: 12px;
+                width: 12px;
+                border-radius: 50%;
+                background-color: #A5D6A7;
+                border: 3px solid #3f51b5;
+            }
+            .user-status-online {
+                background-color: #37D59C;
+            }
+        }
+        .notifications-badge span {
+            color: #FFF;
+            background-color: #ff7961;
+            height: 13px;
+            width: 13px;
+            font-size: 0.55rem;
+            top: 1px;
+            right: -4px;
+        }
+    }
+    
+    .icon_file_upload {
+        transform: rotate(90deg);
+    }
+    
+    .projects-dashboard {
+        .projects-list {
+            .material-icons {
+                height: 12px;
+            }
+            i {
+                font-size: 12px;
+            }
+        }
+    }
+    .list-header-title {
+        vertical-align: middle;
+        padding-top: 5px;
+        margin-left: 10px;
+        color: #797979;
+        font-weight: 500;
+        font-size: 14px;
+    }
+    
+    div.list-text {
+        color: #797979;
+        opacity: 0.8;
+        font-size: 14px;
+        padding: 0;
+    }
+    div.left_menu_list_item {
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
+}

@@ -1,0 +1,50 @@
+.RightMenu {
+    background-color: #edeff2;
+
+    div.speaker_notes_container {
+        margin: 0;
+        width: auto;
+    }
+    div.users_list_item > div {
+        padding-bottom: 0;
+    }
+    div.users_list_item {
+        padding-top: 12px;
+        cursor: pointer;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.08);
+        }
+        li {
+            height: 30px;
+            line-height: 30px;
+        }
+        .user-status-wrap {
+            position: relative;
+            .user-status {
+                position: absolute;
+                top: -70px;
+                right: 14px;
+                height: 10px;
+                width: 10px;
+                border-radius: 50%;
+                background-color: #ff5722;
+                border: 3px solid #FFF;
+            }
+        }
+        
+    }
+    div.right-menu-userImage {
+        width: 46px;
+        height: 46px;
+        margin: 0 auto;
+        border: #f3f5f8 solid 3px;
+    }
+    span.right-menu-username {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        color: #797979;
+        opacity: 0.8;
+    }
+}
+
