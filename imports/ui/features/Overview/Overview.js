@@ -11,7 +11,7 @@ import Production from "./components/Production";
 import Times from "./components/Times";
 import Members from "./components/Members";
 import Issues from "./components/Issues";
-
+import Compression from "../../components/Compression";
 
 import { Projects } from "/imports/api/projects/projects.js";
 
@@ -23,16 +23,32 @@ class Overview extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            isLowResolution: false
+        };
+
         this.updateProjectField = this.updateProjectField.bind(this);
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth < 1260) {
+                this.setState({ isLowResolution: true });
+            } else if (window.innerWidth >= 1260) {
+                this.setState({ isLowResolution: false });
+            }
+        });
     }
 
     updateProjectField = (projectId, fieldName) => event => {
         Projects.update_field(projectId, fieldName, event.target.value);
     };
 
+    handleExpandClick = () => {
+        this.setState({ expanded: !this.state.expanded });
+    };
+
     render() {
         const { classes, users, project } = this.props;
-
+        const isLowResolution = this.state.isLowResolution;
         return (
             <Grid
                 container
@@ -42,18 +58,62 @@ class Overview extends React.Component {
                 }}
                 className="Overview"
             >
-                <Grid item xs={1} />
-                <Grid item xs={6}>
-                    <Summary updateProjectField={this.updateProjectField} project={project} />
-                    <Links project={project} />
-                    <Production updateProjectField={this.updateProjectField} project={project} />
+                {isLowResolution ? null : <Grid item xs={1} />}
+                <Grid item xs={6} style={{ minWidth: "475px" }}>
+                    {isLowResolution ? (
+                        <div>
+                            <Compression title={"Summary"}>
+                                <Summary
+                                    updateProjectField={this.updateProjectField}
+                                    project={project}
+                                />
+                            </Compression>
+                            <Compression title={"Links"}>
+                                <Links project={project} />
+                            </Compression>
+                            <Compression title={"Production"}>
+                                <Production
+                                    updateProjectField={this.updateProjectField}
+                                    project={project}
+                                />
+                            </Compression>
+                        </div>
+                    ) : (
+                        <div>
+                            <Summary
+                                updateProjectField={this.updateProjectField}
+                                project={project}
+                            />
+                            <Links project={project} />
+                            <Production
+                                updateProjectField={this.updateProjectField}
+                                project={project}
+                            />
+                        </div>
+                    )}
                 </Grid>
-                <Grid item xs={4}>
-                    <Times />
-                    <Members users={users}/>
-                    <Issues />
+                <Grid item xs={4} style={{ minWidth: "310px" }}>
+                    {isLowResolution ? (
+                        <div>
+                            <Compression title={"Times"}>
+                                <Times />
+                            </Compression>
+                            <Compression title={"Members"}>
+                                <Members users={users} />
+                            </Compression>
+                            <Compression title={"Issues"}>
+                                <Issues />
+                            </Compression>
+                        </div>
+                    ) : (
+                        <div>
+                            <Times />
+                            <Members users={users} />
+                            <Issues />
+                        </div>
+                    )}
                 </Grid>
-                <Grid item xs={1} />
+                {isLowResolution ? null : <Grid item xs={1} />}
             </Grid>
         );
     }

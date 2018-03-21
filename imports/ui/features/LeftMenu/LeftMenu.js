@@ -46,9 +46,7 @@ class LeftMenu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: {
-                isOnline: true
-            }
+            user: { isOnline: true }
         };
     }
 
